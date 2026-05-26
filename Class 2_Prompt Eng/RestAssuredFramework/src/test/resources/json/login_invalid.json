@@ -1,0 +1,7 @@
+{
+  "username": "invalid.user@example.com",
+  "password": "WrongPassword",
+  "client_id": "CLIENT_ID",
+  "client_secret": "CLIENT_SECRET",
+  "grant_type": "password"
+}
