@@ -11,7 +11,7 @@ Screenshots from a full demo walkthrough with a real resume (`Sakshi_Khandelwal_
 | Step | File | Screen | Action |
 |------|------|--------|--------|
 | 1 | `01-signin.png` | Sign in | Enter email + first name → **Continue** |
-| 2 | `02-profile-upload.png` | My Profile → Upload | Upload PDF/Word resume (or Use Demo Profile) |
+| 2 | `02-profile-upload.png` | My Profile → Upload | Upload PDF/Word resume |
 | 3 | `03-profile-confirm.png` | My Profile → Confirm | Review extracted name, role, skills → **Confirm & View Roles** |
 | 4 | `04-profile-roles.png` | My Profile → Roles | Pick a recommended role (e.g. Senior Quality Automation Specialist) |
 | 5 | `05-profile-preferences.png` | My Profile → Preferences | Set target role, location, remote preference → **Find Jobs** |
@@ -96,7 +96,7 @@ All screenshots live in `docs/screenshots/`:
 
 - **No database required** — profile, jobs, and saved applications persist in browser `localStorage`
 - **Password optional** — only shown when Supabase env vars are configured
-- **Demo jobs** — 23 built-in listings when Adzuna API is unavailable; live Adzuna on Vercel when configured
+- **Live jobs** — all listings fetched from the Adzuna API (configured on Vercel)
 - **AI optional** — rule-based fallbacks work without `OPENAI_API_KEY`
 - **Human-in-the-loop** — user confirms profile, approves resume changes, applies manually on company sites
 

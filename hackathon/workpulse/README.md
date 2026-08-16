@@ -6,9 +6,9 @@ Search less. Understand more. Apply smarter.
 
 | | |
 |---|---|
-| **Live Demo** | [https://workpulse-delta-eight.vercel.app](https://workpulse-delta-eight.vercel.app) |
+| **Live App** | [https://workpulse-delta-eight.vercel.app](https://workpulse-delta-eight.vercel.app) |
 | **Stack** | Next.js 16 · TypeScript · Tailwind CSS · OpenAI · Adzuna |
-| **Persistence** | Browser localStorage (no database required for hackathon demo) |
+| **Persistence** | Browser localStorage (no database required) |
 
 ---
 
@@ -33,7 +33,7 @@ Existing tools either show generic match percentages, push auto-apply bots, or g
 | Step | What WorkPulse Does |
 |------|---------------------|
 | 1. **Profile** | Upload a resume (PDF, Word, or text) → AI extracts a structured professional profile |
-| 2. **Discovery** | Search live IT jobs (Adzuna) or use 23 built-in demo jobs with freshness filters |
+| 2. **Discovery** | Search live IT jobs from **Adzuna** with freshness, location, and work-type filters |
 | 3. **Matching** | Evidence-based match scores with categories: Excellent, Good, Stretch, Low |
 | 4. **Explain** | "Why match?" breakdown — skills, experience, role, location |
 | 5. **Skill gaps** | Per-job gap analysis with market demand from real retrieved listings |
@@ -54,12 +54,12 @@ Existing tools either show generic match percentages, push auto-apply bots, or g
 ### Key features
 
 - AI profile extraction for any IT role
-- Live job search via Adzuna (with demo fallback)
+- Live job search via **Adzuna API** (India, UK, US)
 - Match engine with transparent score breakdown
 - Market skill intelligence from actual job listings
 - Save jobs and track applications in one place
 - Light / dark theme
-- Works fully offline in demo mode (no API keys required)
+- Compare external jobs by pasting any job description
 
 ---
 
@@ -72,7 +72,7 @@ Existing tools either show generic match percentages, push auto-apply bots, or g
 | **UI** | Tailwind CSS v4, Lucide icons |
 | **Validation** | Zod |
 | **AI** | OpenAI API (optional — rule-based fallbacks when unset) |
-| **Jobs API** | Adzuna (optional — mock source fallback) |
+| **Jobs API** | [Adzuna](https://developer.adzuna.com/) — live job listings |
 | **Resume parsing** | pdf-parse, mammoth, word-extractor |
 | **Persistence** | Browser localStorage (hackathon default) |
 | **Cloud auth/sync** | Supabase (optional) |
@@ -110,7 +110,7 @@ cd hackathon/workpulse
 npm install
 ```
 
-### 2. Environment variables (optional)
+### 2. Environment variables
 
 ```bash
 cp .env.example .env.local
@@ -118,15 +118,15 @@ cp .env.example .env.local
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `OPENAI_API_KEY` | No | Enables full AI features (fallbacks work without it) |
+| `ADZUNA_APP_ID` | **Yes** | Adzuna App ID ([developer portal](https://developer.adzuna.com/)) |
+| `ADZUNA_APP_KEY` | **Yes** | Adzuna App Key |
+| `ADZUNA_COUNTRY` | **Yes** | Country code: `in`, `us`, `gb`, etc. |
+| `OPENAI_API_KEY` | No | Enables full AI features (rule-based logic works without it) |
 | `OPENAI_MODEL` | No | Default: `gpt-4o-mini` |
-| `ADZUNA_APP_ID` | No | Live job search ([Adzuna developer portal](https://developer.adzuna.com/)) |
-| `ADZUNA_APP_KEY` | No | Adzuna API key |
-| `ADZUNA_COUNTRY` | No | e.g. `in`, `us`, `gb` |
 | `NEXT_PUBLIC_SUPABASE_URL` | No | Enables cloud auth + sync |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | No | Supabase anon key |
 
-> **Hackathon demo:** The app runs fully without any env vars using demo jobs and rule-based logic.
+> **Job search requires Adzuna credentials.** Set `ADZUNA_APP_ID`, `ADZUNA_APP_KEY`, and `ADZUNA_COUNTRY` in `.env.local` for local development and in the Vercel project dashboard for production.
 
 ### 3. Start development server
 
@@ -152,21 +152,19 @@ npm run typecheck  # TypeScript check
 npx vercel deploy --prod
 ```
 
-Set `ADZUNA_APP_ID`, `ADZUNA_APP_KEY`, and `ADZUNA_COUNTRY` in the Vercel project dashboard for live jobs.
+Set `ADZUNA_APP_ID`, `ADZUNA_APP_KEY`, and `ADZUNA_COUNTRY` in the Vercel project dashboard (already configured on production).
 
 ---
 
-## Demo
-
-### Live application
+## Live Application
 
 **https://workpulse-delta-eight.vercel.app**
 
 Alternate URL: https://workpulse-sakshi-khandelwal.vercel.app
 
-### Demo walkthrough (full user journey)
+### Walkthrough (full user journey)
 
-Follow this path on the [live demo](https://workpulse-delta-eight.vercel.app) — screenshots for each step are below.
+Follow this path on the [live app](https://workpulse-delta-eight.vercel.app) — screenshots for each step are below.
 
 1. **Sign in** — enter email + first name → Continue  
 2. **My Profile → Upload** — upload your resume (PDF, Word, or `.txt`)  
@@ -187,14 +185,14 @@ See [docs/SCREENSHOTS.md](./docs/SCREENSHOTS.md) for the complete screenshot ind
 
 ### Authentication note
 
-- **Demo mode (current Vercel deploy):** Email + optional first name only. No password. Data stored in your browser.
+- **Current Vercel deploy:** Email + optional first name only. No password. Data stored in your browser.
 - **Supabase mode:** Password field appears automatically when Supabase env vars are configured. Passwords are stored by Supabase Auth — not in this app's database.
 
 ---
 
 ## Screenshots
 
-Full demo walkthrough with a real resume upload. See [docs/SCREENSHOTS.md](./docs/SCREENSHOTS.md) for step descriptions.
+Full walkthrough with a real resume upload. See [docs/SCREENSHOTS.md](./docs/SCREENSHOTS.md) for step descriptions.
 
 ### 1. Sign in
 
@@ -298,10 +296,10 @@ See [FLOW.md](./FLOW.md) for end-to-end user flow and architecture diagrams.
 
 ## Architecture highlights
 
-- **Job source abstraction** — `AdzunaJobSource` with automatic fallback to `MockJobSource` (23 demo jobs)
+- **Job ingestion** — `AdzunaJobSource` fetches live listings; freshness filters apply client-side on retrieved results
 - **Match engine** — Weighted scoring: skills (35%), role (25%), experience (20%), location (10%), mandatory skills (10%)
 - **Human-in-the-loop** — User confirms profile, approves every resume change, applies manually on company sites
-- **CRISP persistence** — Centralized localStorage service with schema versioning and demo reset
+- **CRISP persistence** — Centralized localStorage service with schema versioning and session reset
 
 ---
 
@@ -321,7 +319,6 @@ See [FLOW.md](./FLOW.md) for end-to-end user flow and architecture diagrams.
 - Never fabricates salary or job URLs
 - User confirms profile before matching
 - User approves every resume modification
-- Demo mode clearly labeled in UI
 - User controls all applications
 
 ---
