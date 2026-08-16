@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* ── Dark theme (default) ── */
+:root,
+[data-theme="dark"] {
+  --bg-page: #020617;
+  --bg-page-gradient-from: #020617;
+  --bg-page-gradient-via: #0f172a;
+  --bg-page-gradient-to: #1e1b4b;
+  --bg-sidebar: rgba(2, 6, 23, 0.95);
+  --bg-card: rgba(15, 23, 42, 0.6);
+  --bg-card-solid: #0f172a;
+  --bg-input: #0f172a;
+  --bg-muted: #1e293b;
+  --bg-hover: rgba(30, 41, 59, 0.5);
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --border: #1e293b;
+  --border-strong: #334155;
+  --bar-track: #1e293b;
+  --scrollbar-track: #0f172a;
+  --scrollbar-thumb: #334155;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --accent-text: #a5b4fc;
+  --accent-bg: rgba(99, 102, 241, 0.15);
+  --accent-bg-active: rgba(99, 102, 241, 0.25);
+  color-scheme: dark;
+}
+
+/* ── Light theme — warm cream & terracotta (Testing Academy style) ── */
+[data-theme="light"] {
+  --bg-page: #fcf9f5;
+  --bg-page-gradient-from: #fcf9f5;
+  --bg-page-gradient-via: #f8f3ed;
+  --bg-page-gradient-to: #f5efe6;
+  --bg-sidebar: #f5efe6;
+  --bg-card: #ffffff;
+  --bg-card-solid: #ffffff;
+  --bg-input: #ffffff;
+  --bg-muted: #f8f3ed;
+  --bg-hover: #f0e8de;
+  --text-primary: #1a1a1a;
+  --text-secondary: #3d3d3d;
+  --text-muted: #6b6560;
+  --text-subtle: #9a928a;
+  --border: #e8e0d5;
+  --border-strong: #d4c9bc;
+  --bar-track: #ede6dc;
+  --scrollbar-track: #f8f3ed;
+  --scrollbar-thumb: #d4c9bc;
+  --accent: #c86033;
+  --accent-hover: #b5582f;
+  --accent-text: #c86033;
+  --accent-bg: #f8e7d8;
+  --accent-bg-active: #f0ddd0;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--bg-page);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+body {
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
