@@ -164,16 +164,26 @@ Set `ADZUNA_APP_ID`, `ADZUNA_APP_KEY`, and `ADZUNA_COUNTRY` in the Vercel projec
 
 Alternate URL: https://workpulse-sakshi-khandelwal.vercel.app
 
-### Quick start (3-minute walkthrough)
+### Demo walkthrough (full user journey)
 
-1. Open the live demo → click **Sign in & Upload Resume**
-2. Enter any email (e.g. `judge@demo.com`) → **Continue**
-3. On **Profile**, click **Use Demo Profile (Backend Engineer)** → confirm
-4. Go to **Jobs** → click **Search Jobs**
-5. Open a high-match job (e.g. 85%+) → review match explanation and skill gaps
-6. Click **Save** on a job → open **Applications** to track it
-7. Click **Optimize Resume** → approve suggested changes
-8. Visit **Skills** for market demand chart and learning roadmap
+Follow this path on the [live demo](https://workpulse-delta-eight.vercel.app) — screenshots for each step are below.
+
+1. **Sign in** — enter email + first name → Continue  
+2. **My Profile → Upload** — upload your resume (PDF, Word, or `.txt`)  
+3. **Confirm** — review extracted skills, experience, and summary  
+4. **Roles** — pick a recommended career role from your resume  
+5. **Preferences** — set location & remote preference → **Find Jobs**  
+6. **Job Discovery** — apply filters (freshness, location, work type) → **Search Jobs**  
+7. **Save jobs** — bookmark listings worth applying to  
+8. **Job detail** — check matched vs missing skills and match score breakdown  
+9. **Learning Recommendations** — open curated Docs & Video links for skill gaps  
+10. **Optimize Resume** — review ATS estimate and line-by-line suggestions  
+11. **Market Intelligence** — skill demand from your search + priority gaps  
+12. **Career Plan** — 30-day learning roadmap on the Skills page  
+13. **Applications** — track Saved → Applied → Interview; dismiss or remove jobs  
+14. **Compare External Job** *(bonus)* — paste any job URL/description for instant match analysis  
+
+See [docs/SCREENSHOTS.md](./docs/SCREENSHOTS.md) for the complete screenshot index.
 
 ### Authentication note
 
@@ -184,39 +194,83 @@ Alternate URL: https://workpulse-sakshi-khandelwal.vercel.app
 
 ## Screenshots
 
-Screenshots captured from the live production deployment. See [docs/SCREENSHOTS.md](./docs/SCREENSHOTS.md) for descriptions and regeneration instructions.
+Full demo walkthrough with a real resume upload. See [docs/SCREENSHOTS.md](./docs/SCREENSHOTS.md) for step descriptions.
 
-### Landing page
+### 1. Sign in
 
-![WorkPulse home page](./docs/screenshots/01-home.png)
+![Sign in with email](./docs/screenshots/01-signin.png)
 
-### Sign in (demo mode)
+### 2. Upload resume (My Profile)
 
-![Sign in page](./docs/screenshots/02-signin.png)
+![Upload resume on My Profile](./docs/screenshots/02-profile-upload.png)
 
-### Profile & resume upload
+### 3. Confirm extracted profile
 
-![Profile page with resume upload](./docs/screenshots/03-profile.png)
+![Confirm profile — review skills and experience](./docs/screenshots/03-profile-confirm.png)
 
-### Dashboard
+### 4. Select career role
 
-![Career dashboard with match stats](./docs/screenshots/04-dashboard.png)
+![Role suggestions based on resume](./docs/screenshots/04-profile-roles.png)
 
-### Job discovery
+### 5. Set career preferences
 
-![Job discovery with match scores](./docs/screenshots/05-jobs-discovery.png)
+![Career preferences — location and remote](./docs/screenshots/05-profile-preferences.png)
 
-### Job detail & save
+### 6. Search jobs with filters
 
-![Job detail with match analysis and Save button](./docs/screenshots/06-job-detail.png)
+![Job discovery — freshness, location, work type filters](./docs/screenshots/06-jobs-filters.png)
 
-### Applications tracker
+### 7. Save jobs from results
 
-![Applications page for saved jobs](./docs/screenshots/07-applications.png)
+![Job listings with Save button and match scores](./docs/screenshots/07-jobs-save.png)
 
-### Skills & market intelligence
+### 8. Job detail — skills match
 
-![Skills page with market demand](./docs/screenshots/08-skills.png)
+![Job detail — matched and missing skills](./docs/screenshots/08-job-detail-skills.png)
+
+### 9. Match score breakdown
+
+![Why 77% match — skills, role, experience, location](./docs/screenshots/09-job-match-breakdown.png)
+
+### 10. Learning recommendations
+
+![Learning resources — docs and videos for skill gaps](./docs/screenshots/10-job-learning-recommendations.png)
+
+### 11. Resume optimization overview
+
+![ATS compatibility estimate — before and after](./docs/screenshots/11-resume-optimize-overview.png)
+
+### 12. Resume optimization suggestions
+
+![Line-by-line resume suggestions and skill gaps](./docs/screenshots/12-resume-optimize-suggestions.png)
+
+### 13. Market Intelligence — skill demand
+
+![Market skill demand chart and career readiness](./docs/screenshots/13-market-intelligence-demand.png)
+
+### 14. Market Intelligence — priority gaps
+
+![Strongest market opportunity and priority skill gaps](./docs/screenshots/14-market-intelligence-gaps.png)
+
+### 15. 30-day career plan
+
+![30-day career improvement plan](./docs/screenshots/15-career-plan.png)
+
+### 16. Applications — saved jobs
+
+![Applications tracker — saved jobs with match scores](./docs/screenshots/16-applications-saved.png)
+
+### 17. Applications — status tracking
+
+![Applications — Applied and Interview stages](./docs/screenshots/17-applications-status.png)
+
+### 18. Compare external job (paste description)
+
+![Compare external job — paste from LinkedIn or company site](./docs/screenshots/18-compare-external-job.png)
+
+### 19. Compare external job — match results
+
+![External job match analysis — 68% stretch opportunity](./docs/screenshots/19-compare-external-results.png)
 
 ---
 
